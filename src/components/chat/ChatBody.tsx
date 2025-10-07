@@ -3,7 +3,6 @@ import type { Message } from "../../types/chat.types";
 import { formatTime, formatTimestamp } from "../../utils/time";
 
 export default function ChatBody({ messages }: { messages: Message[] }) {
-  console.log(messages);
   const sortedMessages = [...messages].sort(
     (a, b) => a.timestamp - b.timestamp
   );
