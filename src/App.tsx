@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div className="app">
       <ChatsList />
-      <Chat chat={apiData[0]} />
+      <Chat chat={apiData[2]} />
     </div>
   );
 }

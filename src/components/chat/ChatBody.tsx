@@ -1,5 +1,6 @@
+import { Fragment } from "react/jsx-runtime";
 import type { Message } from "../../types/chat.types";
-import { formatTimestamp } from "../../utils/time";
+import { formatTime, formatTimestamp } from "../../utils/time";
 
 export default function ChatBody({ messages }: { messages: Message[] }) {
   console.log(messages);
@@ -21,37 +22,35 @@ export default function ChatBody({ messages }: { messages: Message[] }) {
   return (
     <div className="chat-body">
       {Object.entries(groupedMessages).map(([date, msgs]) => (
-        <div key={date}>
-          <div className="date-box">
-            <span className="date">{date}</span>
-          </div>
-
-          <div className="messages-container">
-            {msgs.map((msg) => (
-              <div
-                key={msg.messageId}
-                className={
-                  msg.sender === "USER" ? "user-message" : "bot-message"
-                }
-              >
-                <div>
-                  <span className="message-text">{msg.message}</span>
-
-                  {msg.messageType === "optionedMessage" && msg.options && (
-                    <div>
-                      {msg.options.map((opt, i) => (
-                        <div key={i}>
-                          <div>{opt.optionText}</div>
-                          {opt.optionSubText && <div>{opt.optionSubText}</div>}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
+        <Fragment key={date}>
+          <span className="date">{date}</span>
+          {msgs.map((msg) => (
+            <div
+              key={msg.messageId}
+              className={
+                (msg.sender === "USER" ? "user-message" : "bot-message") +
+                " message"
+              }
+            >
+              <div className="message-text">
+                <span>{msg.message}</span>
+                <span className="timestamp">{formatTime(msg.timestamp)}</span>
               </div>
-            ))}
-          </div>
-        </div>
+              {msg.messageType === "optionedMessage" && msg.options && (
+                <div className="options-container">
+                  {msg.options.map((opt, i) => (
+                    <div key={i} className="option">
+                      <div className="title">{opt.optionText}</div>
+                      {opt.optionSubText && (
+                        <div className="subtitle">{opt.optionSubText}</div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </Fragment>
       ))}
     </div>
   );
