@@ -13,7 +13,7 @@ export default function ChatsList({ chats }: { chats: ChatItem[] }) {
     dispatch(onFilter(input));
   };
   return (
-    <div className="sidebar">
+    <div className="sidebar" style={{ width: activeChatId ? "30%" : "100%" }}>
       <div className="filters">
         <h2>Filter by title / order id</h2>
         <input placeholder="Start typing to search" onChange={onChangeText} />

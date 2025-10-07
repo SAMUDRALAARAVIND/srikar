@@ -23,7 +23,6 @@ export default function Chat() {
         <img src={chat.imageURL} alt="User image" />
         <span>{chat.title}</span>
       </div>
-
       <ChatBody messages={chat.messageList} />
       <div className="chat-footer">
         <input placeholder="Type a Message" />
