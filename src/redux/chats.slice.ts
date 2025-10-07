@@ -21,7 +21,7 @@ const chatsSlice = createSlice({
     onFilter: (state, { payload: filterText }) => {
       const filteredResults = state.data?.filter((chat: ChatItem) => {
         return (
-          chat.id == filterText ||
+          chat.orderId == filterText ||
           chat.title.toLowerCase().includes(filterText.toLowerCase())
         );
       });
