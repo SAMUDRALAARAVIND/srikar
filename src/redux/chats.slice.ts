@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { ChatItem } from "../types/chat.types";
 
 const chatsSlice = createSlice({
   initialState: {
@@ -17,9 +18,18 @@ const chatsSlice = createSlice({
     selectChat: (state, { payload }) => {
       state.selectedChatId = payload;
     },
+    onFilter: (state, { payload: filterText }) => {
+      const filteredResults = state.data?.filter((chat: ChatItem) => {
+        return (
+          chat.id == filterText ||
+          chat.title.toLowerCase().includes(filterText.toLowerCase())
+        );
+      });
+      state.chatsList = filteredResults;
+    },
   },
 });
 
-export const { onDataFetched, selectChat } = chatsSlice.actions;
+export const { onDataFetched, selectChat, onFilter } = chatsSlice.actions;
 
 export default chatsSlice;

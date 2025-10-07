@@ -26,6 +26,11 @@ export default function UserCard({
       <div className="details">
         <span className="title">{userInfo.title}</span>
         <span className="orderId">{userInfo.orderId}</span>
+        {userInfo.messageList.length > 0 && (
+          <span className="latest-message">
+            {userInfo.messageList[0].message}
+          </span>
+        )}
       </div>
       <div>{formatTimestamp(userInfo.latestMessageTimestamp)}</div>
     </div>
