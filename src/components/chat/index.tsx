@@ -9,7 +9,7 @@ export default function Chat() {
     if (!selectedChatId) {
       return null;
     }
-    const filteredChats = state.chats.chatList.filter(
+    const filteredChats = state.chats.chatsList.filter(
       (individualChat) => individualChat.id == selectedChatId
     );
     return filteredChats.length > 0 ? filteredChats[0] : null;

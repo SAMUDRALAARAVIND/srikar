@@ -5,6 +5,7 @@ import { apiData } from "./data";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./redux/store";
 import { useEffect } from "react";
+import { onDataFetched } from "./redux/chats.slice";
 
 function fetchChats() {
   return async function (dispatch, getState) {

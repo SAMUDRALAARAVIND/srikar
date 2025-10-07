@@ -2,6 +2,7 @@
   display: flex;
   max-height: 100%;
   flex-direction: column;
+  overflow-y: scroll;
   .chat-header {
     background-color: #fff;
     padding: 1rem 10px;
@@ -42,12 +43,12 @@
       }
     }
     .user-message {
-      align-self: flex-start;
+      align-self: flex-end;
       background-color: blue;
       color: #fff;
     }
     .bot-message {
-      align-self: flex-end;
+      align-self: flex-start;
       background-color: #fff;
     }
     .options-container {
