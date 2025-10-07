@@ -19,6 +19,7 @@ function fetchChats() {
 
 const ChatWrapper = () => {
   const isDataFetched = useSelector((state) => state.chats.isDataFetched);
+  const selectedChatId = useSelector((state) => state.chats.selectedChatId);
   const chats = useSelector((state) => state.chats.chatsList);
   const dispatch = useDispatch();
 
@@ -31,7 +32,10 @@ const ChatWrapper = () => {
   }
 
   return (
-    <div className="app">
+    <div
+      className="app"
+      style={{ gridTemplateColumns: selectedChatId ? "4fr 8fr" : "auto" }}
+    >
       <ChatsList chats={chats} />
       <Chat />
     </div>
